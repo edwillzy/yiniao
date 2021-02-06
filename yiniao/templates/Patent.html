@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InfoSystem | 专利及著作</title>
+    {% load static %}
+    <title>InfoSystem | 专利及著作</title>
 
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="webpage/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="webpage/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -80,7 +81,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="webpage/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">TitleTest</span>
     </a>
 
@@ -89,7 +90,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="webpage/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">UserName</a>
@@ -192,7 +193,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../examples/HomePage.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% static 'pages/examples/HomePage.html' %}">Home</a></li>
             </ol>
           </div>
         </div>
@@ -227,29 +228,20 @@
 							</tr>
 						  </thead>
 						  <tbody>
+                          {% for row in patent_list %}
 							<tr>
 							  <td>第一位发明人<br>发明名称<br>专利类型<br>专利范围<br>专利状态<br>申请号<br>专利申请日<br>授权公告日<br>授权公告号<br>其它发明人</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
+							  <td>{{ row.dywfmr }}<br>{{ row.fmmc }}<br>{{ row.zllx }}<br>{{ row.zlfw }}<br>{{ row.zlzt }}<br>{{ row.sqh }}<br>{{ row.zlsqr }}<br>{{ row.sqggr }}<br>{{ row.sqggh }}<br>{{ row.qtfmr }}</td>
 							  <td>专利受理通知书<br>专利证书<br>其它文档</td>
 							  <td>备注</td>
-							  <td>a</td>
+							  <td>{{ row.bz }}</td>
 							  <td><div class="btn-group-vertical">
 									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
 									<button type="button" class="btn btn-danger btn-xs">删除</button>
 									</div></td>
 							</tr>
-							<tr>
-							  <td>第一位发明人<br>发明名称<br>专利类型<br>专利范围<br>专利状态<br>申请号<br>专利申请日<br>授权公告日<br>授权公告号<br>其它发明人</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
-							  <td>专利受理通知书<br>专利证书<br>其它文档</td>
-							  <td>备注</td>
-							  <td>a</td>
-							  <td><div class="btn-group-vertical">
-									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
-									<button type="button" class="btn btn-danger btn-xs">删除</button>
-									</div></td>
-							</tr>
-						  </tbody>
+                          {% endfor %}
+                          </tbody>
                   </table>
                 </div>
                 <!-- /.col -->
@@ -281,28 +273,19 @@
 							</tr>
 						  </thead>
 						  <tbody>
+                          {% for row in sCopyRight_list %}
 							<tr>
 							  <td>著作权简称<br>申请人<br>著作权名称<br>著作权编号<br>登记号<br>获得时间<br>著作权人</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
+							  <td>{{ row.zzqjc }}<br>{{ row.sqr }}<br>{{ row.zzqmc }}<br>{{ row.zzqbh }}<br>{{ row.djh }}<br>{{ row.hdsj }}<br>{{ row.zzqr }}</td>
 							  <td>著作权证书</td>
 							  <td>备注</td>
-							  <td>a</td>
+							  <td>{{ row.bz }}</td>
 							  <td><div class="btn-group-vertical">
 									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
 									<button type="button" class="btn btn-danger btn-xs">删除</button>
 									</div></td>
 							</tr>
-							<tr>
-							  <td>著作权简称<br>申请人<br>著作权名称<br>著作权编号<br>登记号<br>获得时间<br>著作权人</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
-							  <td>著作权证书</td>
-							  <td>备注</td>
-							  <td>a</td>
-							  <td><div class="btn-group-vertical">
-									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
-									<button type="button" class="btn btn-danger btn-xs">删除</button>
-									</div></td>
-							</tr>
+				        {% endfor %}
 						  </tbody>
                   </table>
                 </div>
@@ -335,28 +318,19 @@
 							</tr>
 						  </thead>
 						  <tbody>
+                          {% for row in works_list %}
 							<tr>
 							  <td>著作简称<br>著作名称<br>出版时间<br>出版地<br>著作类别<br>总字数<br>语种<br>出版单位<br>作者信息</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
+							  <td>{{ row.zzjc }}<br>{{ row.zzmc }}<br>{{ row.cbsj }}<br>{{ row.cbd }}<br>{{ row.zzlb }}<br>{{ row.zzs }}<br>{{ row.yz }}<br>{{ row.cbdw }}<br>{{ row.zzxx }}</td>
 							  <td>电子文档</td>
 							  <td>备注</td>
-							  <td>a</td>
+							  <td>{{ row.bz }}</td>
 							  <td><div class="btn-group-vertical">
 									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
 									<button type="button" class="btn btn-danger btn-xs">删除</button>
 									</div></td>
 							</tr>
-							<tr>
-							  <td>著作简称<br>著作名称<br>出版时间<br>出版地<br>著作类别<br>总字数<br>语种<br>出版单位<br>作者信息</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
-							  <td>电子文档</td>
-							  <td>备注</td>
-							  <td>a</td>
-							  <td><div class="btn-group-vertical">
-									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
-									<button type="button" class="btn btn-danger btn-xs">删除</button>
-									</div></td>
-							</tr>
+                          {% endfor %}
 						  </tbody>
                   </table>
                 </div>
@@ -389,28 +363,19 @@
 							</tr>
 						  </thead>
 						  <tbody>
+                          {% for row in otherWorks_list %}
 							<tr>
 							  <td>成果简称<br>成果类别<br>成果名称<br>获得时间<br>颁发部门<br>成果编号<br>作者信息</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
+							  <td>{{ row.cgjc}}<br>{{ row.cglb }}<br>{{ row.cgmc }}<br>{{ row.hdsj }}<br>{{ row.bfbm }}<br>{{ row.cgbh }}<br>{{ row.zzxx }}</td>
 							  <td>电子文档</td>
 							  <td>备注</td>
-							  <td>a</td>
+							  <td>{{ row.bz }}</td>
 							  <td><div class="btn-group-vertical">
 									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
 									<button type="button" class="btn btn-danger btn-xs">删除</button>
 									</div></td>
 							</tr>
-							<tr>
-							  <td>成果简称<br>成果类别<br>成果名称<br>获得时间<br>颁发部门<br>成果编号<br>作者信息</td>
-							  <td>a<br>a<br>a<br>a<br>a<br>a<br>a</td>
-							  <td>电子文档</td>
-							  <td>备注</td>
-							  <td>a</td>
-							  <td><div class="btn-group-vertical">
-									<button type="button" class="btn btn-block bg-gradient-primary btn-xs">编辑</button>
-									<button type="button" class="btn btn-danger btn-xs">删除</button>
-									</div></td>
-							</tr>
+                        {% endfor %}
 						  </tbody>
                   </table>
                 </div>
@@ -425,6 +390,7 @@
 			
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -445,12 +411,12 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="webpage/plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap 4 -->
-<script src="webpage/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
-<script src="webpage/dist/js/adminlte.min.js"></script>
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="webpage/dist/js/demo.js"></script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
 </body>
 </html>
