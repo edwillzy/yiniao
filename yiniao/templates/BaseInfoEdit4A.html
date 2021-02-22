@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>InfoSystem | 基本信息</title>
 
-
+{% load static %}
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="webpage/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/plugins/fontawesome-free/css/all.min.css'%}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="webpage/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/dist/css/adminlte.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -80,7 +80,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="webpage/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{% static 'webpage/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">TitleTest</span>
     </a>
 
@@ -89,7 +89,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="webpage/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{% static 'webpage/dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">UserName</a>
@@ -192,7 +192,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../examples/HomePage.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% static '../examples/HomePage.html' %}">Home</a></li>
             </ol>
           </div>
         </div>
@@ -215,38 +215,32 @@
                 <!-- /.col -->
               </div>
               <!-- info row -->
+                <form action="" method="post" novalidate name="sumbit_info" enctype="multipart/form-data">
+                {% csrf_token %}
               <div class="row">
 					<div class="col-sm-12">
 					<div class="form-group">
-						<label>姓名，时间（年月，下同），教授</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<label>时间（年月，下同）</label>
+						<input type="text" name="sj" class="form-control" placeholder="Enter ..." >
 					</div>
-					<div class="form-group">
-						<label>姓名，时间，副教授</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+                      <div class="form-group">
+                        <label>职称</label>
+                        <select class="form-control" name="zc">
+                          <option>助教</option>
+                          <option>讲师</option>
+                          <option>副教授</option>
+                          <option>教授</option>
+                        </select>
+                      </div>
 					</div>
-					<div class="form-group">
-						<label>姓名，时间，讲师</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
-					</div>
-					<div class="form-group">
-						<label>姓名，时间，助教</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
-					</div>
-					<div class="form-group">
-                        <label>姓名，备注</label>
-                        <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
-                    </div>
-					</div>
-					
-					
                 <!-- /.col -->
 				</div>
 				<!-- /.row -->
 				<div class="card-footer">
-					<button type="submit" class="btn btn-default">返回</button>
-					<button type="submit" class="btn btn-info float-right">保存</button>
+					<button type="submit" name="return" class="btn btn-default">返回</button>
+					<button type="submit" name="save" class="btn btn-info float-right">保存</button>
 				</div>
+                </form>
             <!-- /.invoice -->
 			</div><!-- /.col -->
 			
@@ -273,12 +267,12 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="webpage/plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'webpage/plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap 4 -->
-<script src="webpage/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'webpage/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
-<script src="webpage/dist/js/adminlte.min.js"></script>
+<script src="{% static 'webpage/dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="webpage/dist/js/demo.js"></script>
+<script src="{% static 'webpage/dist/js/demo.js' %}"></script>
 </body>
 </html>

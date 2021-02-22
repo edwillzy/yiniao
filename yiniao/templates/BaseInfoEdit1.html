@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>InfoSystem | 基本信息</title>
 
-
+    {% load static %}
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="webpage/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/plugins/fontawesome-free/css/all.min.css' %}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="webpage/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/dist/css/adminlte.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -80,7 +80,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="webpage/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{% static 'webpage/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">TitleTest</span>
     </a>
 
@@ -89,7 +89,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="webpage/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{% static 'webpage/dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">UserName</a>
@@ -192,7 +192,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../examples/HomePage.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% static 'webpage/pages/examples/HomePage.html' %}">Home</a></li>
             </ol>
           </div>
         </div>
@@ -215,103 +215,105 @@
                 <!-- /.col -->
               </div>
               <!-- info row -->
+                <form action="" method="post" novalidate name="sumbit_info" enctype="multipart/form-data">
+                {% csrf_token %}
               <div class="row">
                 <div class="col-sm-6">
 					<div class="form-group">
 						<label>姓名</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name = 'xm' placeholder="{{ baseInfo_list.xm }}" >
 					</div>
 					<div class="form-group">
 						<label>英文全名</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name="ywqm" placeholder="{{ baseInfo_list.ywqm }}" >
 					</div>
 					<div class="form-group">
-						<label>英文姓名</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<label>英文简名</label>
+						<input type="text" class="form-control" name="ywjm" placeholder="{{ baseInfo_list.ywjm }}" >
 					</div>
 					<div class="form-group">
 						<label>性别</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name="xb" placeholder="{{ baseInfo_list.xb }}" >
 					</div>
 					<div class="form-group">
 						<label>出生日期</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name="csrq" placeholder="{{ baseInfo_list.csrq }}" >
 					</div>
 					<div class="form-group">
 						<label>出生地</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name="csd" placeholder="{{ baseInfo_list.csd }}" >
 					</div>
 					<div class="form-group">
 						<label>籍贯</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" class="form-control" name="jg" placeholder="{{ baseInfo_list.jg }}" >
 					</div>
 					<div class="form-group">
 						<label>政治面貌（党派）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="zzmm" placeholder="{{ baseInfo_list.zzmm}}">
 					</div>
 					<div class="form-group">
 						<label>民族</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="mz" placeholder="{{ baseInfo_list.mz }}">
 					</div>
 					<div class="form-group">
 						<label>工号</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="gh" placeholder="{{ baseInfo_list.gh  }}">
 					</div>
 					<div class="form-group">
 						<label>工资号</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="gzh" placeholder="{{ baseInfo_list.gzh }}">
 					</div>
 					<div class="form-group">
 						<label>身份证号</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="sfzh" placeholder="{{ baseInfo_list.sfzh   }}">
 					</div>
 					<div class="form-group">
 						<label>职称（专业技术职务）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="zc" placeholder="{{ baseInfo_list.zc  }}">
 					</div>
 					<div class="form-group">
 						<label>定职日期（评定时间）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="dzrq" placeholder="{{ baseInfo_list.dzrq  }}">
 					</div>
 					<div class="form-group">
 						<label>学位（最高学位）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="xw" placeholder="{{ baseInfo_list.xw  }}">
 					</div>
 					<div class="form-group">
 						<label>授予单位</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="sydw" placeholder="{{ baseInfo_list.sydw  }}">
 					</div>
 					<div class="form-group">
 						<label>授予时间</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="sysj" placeholder="{{ baseInfo_list.sysj }}">
 					</div>
 					<div class="form-group">
 						<label>学历（最高学历，最后学历）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="xl" placeholder="{{ baseInfo_list.xl  }}">
 					</div>
 					<div class="form-group">
 						<label>毕业院校（毕业学校）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="byyx" placeholder="{{ baseInfo_list.byyx }}">
 					</div>
 					<div class="form-group">
 						<label>毕业时间</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="bysj" placeholder="{{ baseInfo_list.bysj }}">
 					</div>
 					<div class="form-group">
 						<label>专业（所学专业）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="zy" placeholder="{{ baseInfo_list.zy  }}">
 					</div>
 					<div class="form-group">
 						<label>从事专业</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="cszy" placeholder="{{ baseInfo_list.cszy  }}">
 					</div>
 					<br>
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile">
+						<input type="file" class="custom-file-input" name="grjlCT" id="customFile">
 						<label class="custom-file-label" for="customFile">个人简历（中文全）</label>
                     </div>
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile">
+						<input type="file" class="custom-file-input" name="grjlC" id="customFile">
 						<label class="custom-file-label" for="customFile">个人简历（中文简）</label>
                     </div>
 					<br>
@@ -321,99 +323,99 @@
                 <div class="col-sm-6">
 					<div class="form-group">
 						<label>所属学科</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="ssxk" placeholder="{{ baseInfo_list.ssxk  }}">
 					</div>
 					<div class="form-group">
 						<label>是否博导</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="bd" placeholder="{{ baseInfo_list.bd  }}">
 					</div>
 					<div class="form-group">
 						<label>是否硕导</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="sd" placeholder="{{ baseInfo_list.sd }}">
 					</div>
 					<div class="form-group">
 						<label>研究方向</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="yjfx" placeholder="{{ baseInfo_list.yjfx }}">
 					</div>
 					<div class="form-group">
 						<label>行政职务</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="xzzw" placeholder="{{ baseInfo_list.xzzw }}">
 					</div>
 					<div class="form-group">
 						<label>主要社会兼职（社会职务）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="zyshjz" placeholder="{{ baseInfo_list.zyshjz  }}">
 					</div>
 					<div class="form-group">
 						<label>来校时间</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="lxsj" placeholder="{{ baseInfo_list.lxsj }}">
 					</div>
 					<div class="form-group">
 						<label>外语语种</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="wyyz" placeholder="{{ baseInfo_list.wyyz  }}">
 					</div>
 					<div class="form-group">
 						<label>外语水平</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="wysp" placeholder="{{ baseInfo_list.wysp  }}">
 					</div>
 					<div class="form-group">
 						<label>参加工作时间</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="cjgzsj" placeholder="{{ baseInfo_list.cjgzsj  }}">
 					</div>
 					<div class="form-group">
 						<label>工作单位</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="gzdw" placeholder="{{ baseInfo_list.gzdw  }}">
 					</div>
 					<div class="form-group">
 						<label>家庭住址</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="jtzz" placeholder="{{ baseInfo_list.jtzz  }}">
 					</div>
 					<div class="form-group">
 						<label>个人网站</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="grwz" placeholder="{{ baseInfo_list.grwz  }}">
 					</div>
 					<div class="form-group">
 						<label>通讯地址</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="txdz" placeholder="{{ baseInfo_list.txdz  }}">
 					</div>
 					<div class="form-group">
 						<label>邮政编码（邮编）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="yzbm" placeholder="{{ baseInfo_list.yzbm  }}">
 					</div>
 					<div class="form-group">
 						<label>e-mail（电子邮件，电子邮箱）</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="email" placeholder="{{ baseInfo_list.email  }}">
 					</div>
 					<div class="form-group">
 						<label>QQ号</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="qq" placeholder="{{ baseInfo_list.qq  }}">
 					</div>
 					<div class="form-group">
 						<label>联系电话</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="lxdh" placeholder="{{ baseInfo_list.lxdh  }}">
 					</div>
 					<div class="form-group">
 						<label>办公电话</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="bgdh" placeholder="{{ baseInfo_list.bgdh  }}">
 					</div>
 					<div class="form-group">
 						<label>移动电话</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="yddh" placeholder="{{ baseInfo_list.yddh  }}">
 					</div>
 					<div class="form-group">
 						<label>秘书</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="ms" placeholder="{{ baseInfo_list.ms  }}">
 					</div>
 					<div class="form-group">
 						<label>秘书电话</label>
-						<input type="text" class="form-control" placeholder="Enter ...">
+						<input type="text" class="form-control" name="msdh" placeholder="{{ baseInfo_list.msdh }}">
 					</div>
 					<br>
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile">
+						<input type="file" class="custom-file-input" name="grjlET" id="customFile">
 						<label class="custom-file-label" for="customFile">个人简历（英文全，不含论文项目等）</label>
                     </div>
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile">
+						<input type="file" class="custom-file-input" name="grjlE" id="customFile">
 						<label class="custom-file-label" for="customFile">个人简历（英文简，引文论文用）</label>
                     </div>
 					<br><br>
@@ -421,9 +423,10 @@
                 <!-- /.col -->
 				</div>
 				<div class="card-footer">
-					<button type="submit" class="btn btn-default">返回</button>
-					<button type="submit" class="btn btn-info float-right">保存</button>
+					<button type="submit" class="btn btn-default" name="return">返回</button>
+					<button type="submit" class="btn btn-info float-right" name="save">保存</button>
 				</div>
+                </form>
             <!-- /.invoice -->
 			</div><!-- /.col -->
 			
@@ -450,12 +453,12 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="webpage/plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'webpage/plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap 4 -->
-<script src="webpage/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'webpage/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
-<script src="webpage/dist/js/adminlte.min.js"></script>
+<script src="{% static 'webpage/dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="webpage/dist/js/demo.js"></script>
+<script src="{% static 'webpage/dist/js/demo.js' %}"></script>
 </body>
 </html>

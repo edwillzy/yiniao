@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>InfoSystem | 基本信息</title>
 
-
+{% load static %}
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="webpage/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/plugins/fontawesome-free/css/all.min.css' %}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="webpage/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{% static 'webpage/dist/css/adminlte.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -80,7 +80,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="webpage/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{% static 'webpage/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">TitleTest</span>
     </a>
 
@@ -89,7 +89,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="webpage/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{% static 'webpage/dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">UserName</a>
@@ -192,7 +192,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../examples/HomePage.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% static '../examples/HomePage.html' %}">Home</a></li>
             </ol>
           </div>
         </div>
@@ -215,34 +215,36 @@
                 <!-- /.col -->
               </div>
               <!-- info row -->
+                <form action="" method="post" novalidate name="sumbit_info" enctype="multipart/form-data">
+                {% csrf_token %}
               <div class="row">
 					<div class="col-sm-6">
 					<div class="form-group">
 						<label>入党时间</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" name="rdsj" class="form-control" placeholder="{{ part.rdsj}}" >
 					</div>
 					<div class="form-group">
 						<label>入党介绍人</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" name="jsr" class="form-control" placeholder="{{ part.jsr}}" >
 					</div>
 					<div class="form-group">
 						<label>入党时所在支部</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" name="szzb" class="form-control" placeholder="{{ part.szzb}}" >
 					</div>
 					</div>
 					
 					<div class="col-sm-6">
 					<div class="form-group">
 						<label>转正时间</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" name="zzsj" class="form-control" placeholder="{{ part.zzsj}}" >
 					</div>
 					<div class="form-group">
 						<label>现在支部</label>
-						<input type="text" class="form-control" placeholder="Enter ..." >
+						<input type="text" name="xzzb" class="form-control" placeholder="{{ part.xzzb}}" >
 					</div>
 					<div class="form-group">
                         <label>备注</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <input type="text" name="bz" class="form-control" placeholder="{{ part.bz }}" >
                     </div>
 					</div>
 					
@@ -250,9 +252,10 @@
 				</div>
 				<!-- /.row -->
 				<div class="card-footer">
-					<button type="submit" class="btn btn-default">返回</button>
-					<button type="submit" class="btn btn-info float-right">保存</button>
+					<button type="submit" name="return" class="btn btn-default">返回</button>
+					<button type="submit" name="save" class="btn btn-info float-right">保存</button>
 				</div>
+                </form>
             <!-- /.invoice -->
 			</div><!-- /.col -->
 			
@@ -279,12 +282,12 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="webpage/plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'webpage/plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap 4 -->
-<script src="webpage/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'webpage/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
-<script src="webpage/dist/js/adminlte.min.js"></script>
+<script src="{% static 'webpage/dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="webpage/dist/js/demo.js"></script>
+<script src="{% static 'webpage/dist/js/demo.js' %}"></script>
 </body>
 </html>
